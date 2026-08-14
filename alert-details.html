@@ -1,138 +1,84 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Severe Alert Bulletin</title>
 
-  <title>Severe Alert Bulletin</title>
-
-  <style>
-
-    body {
-
-      font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'Courier New', monospace;
-
-    }
-
-    .navbar {
-
-      background-color: #333;
-      padding: 10px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      text-align: center;
-
-    }
-
-    .navbar a {
-
-      color: #fff;
-      text-decoration: none;
-      padding: 6px 12px;
-      display: inline-block;
-
-    }
-
-    .navbar a:hover {
-
-      color: #ffc107;
-      color: #000;
-      border-radius: 3px;
-      cursor: pointer;
-
-    }
-
-    .site-header {
-      text-align: center;
-    }
-
-    .main-content {
-
-      background-color: #fffcdf;
-      padding: 15px;
-      border-radius: 5px;
-      border: 5px solid #ffc107;
-
-    }
-
-    footer {
-
-      text-align: center;
-      margin-top: 20px;
-
-    }
-
-  </style>
-
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <nav class="navbar">
-      <a href="index.html">Home</a>
-      <a href="alert-details.html">Alert Details</a>
-      <a href="about-system.html">About System</a>
-      <a href="sources.html">Data Sources</a>
-      <a href="hotspot-map.html">Hotspot Map</a>
-      <a href="forecast.html">Forecast Table</a>
-      <a href="subscribe.html">Subscription</a>
-      <a href="media.html">Media Portal</a>
-      <a href="navigation.html">Portal Index</a>
+        <a href="index.html">Home</a>
+        <a href="alert-details.html">Alert Details</a>
+        <a href="about-system.html">About System</a>
+        <a href="sources.html">Data Sources</a>
+        <a href="hotspot-map.html">Hotspot Map</a>
+        <a href="forecast.html">Forecast Table</a>
+        <a href="subscribe.html">Subscription</a>
+        <a href="media.html">Media Portal</a>
+        <a href="navigation.html">Portal Index</a>
     </nav>
 
     <header class="site-header">
-
-      <h1>Severe Alert Bulletin</h1>
-
+        <h1>Severe Alert Bulletin</h1>
     </header>
 
     <main class="main-content">
 
-      <section>
+        <section>
 
-        <h2>Alert Status: <strong style="color: red;">Red Warning - Severe Heatwave</strong></h2>
+            <h2>
+                Alert Status:
+                <strong class="warning">Red Warning - Severe Heatwave</strong>
+            </h2>
 
-        <h3>Target Region: <strong style="color: blue;">Vidharba and Central India</strong></h3>
+            <h3>
+                Target Region:
+                <strong class="blue-text">Vidharba and Central India</strong>
+            </h3>
 
-        <p>
-        <strong>Bulletin Details:</strong> issued via Automatic Weather Station telemetry and IMD servers.
-      </p>
+            <p>
+                <strong>Bulletin Details:</strong>
+                Issued via Automatic Weather Station telemetry and IMD servers.
+            </p>
 
-      <p>
-        Peak telemetry station temperatures have exceeded <strong style="color: red;">47<sup>°</sup>C</strong>. Critical heatwave thresholds have been breached across primary monitoring sectors.
-      </p>
+            <p>
+                Peak telemetry station temperatures have exceeded
+                <strong class="warning">47<sup>°</sup>C</strong>.
+                Critical heatwave thresholds have been breached across
+                primary monitoring sectors.
+            </p>
 
-      <p>
-        <em>
-          
-          Public Advisory:
+            <div>
+                <em>Public Advisory:</em>
 
-          <ul>
-            <li>Minimize outdoor activity between 11:00 AM and 4:00 PM.</li>
-            <li>Hydration mandatory: Drink Water and Electrolytes frequently.</li>
-            <li>Use Sunscreen and cover yourself well with full sleeved clothing if going out is inevitable.</li>
-          </ul>
+                <ul>
+                    <li>Minimize outdoor activity between 11:00 AM and 4:00 PM.</li>
+                    <li>Hydration mandatory: Drink water and electrolytes frequently.</li>
+                    <li>
+                        Use sunscreen and cover yourself well with full-sleeved
+                        clothing if going out is inevitable.
+                    </li>
+                </ul>
+            </div>
 
-        </em>
-      </p>
+            <p>
+                <strong>Disclaimer:</strong>
+                Forecast subject to revision based on real-time atmospheric updates.
+            </p>
 
-      <p>
-        Disclaimer: Forecast subject to revision based on real-time atmospheric updates.
-      </p>
-
-      </section>
+        </section>
 
     </main>
 
     <footer>
-
-      <p>End of Page</p>
-      <p>Tanush Gujrathi 16010125071 SY A3 KJSCE</p>
-
+        <p>End of Page</p>
+        <p>Tanush Gujrathi 16010125071 SY A3 KJSCE</p>
     </footer>
 
 </body>
-
 </html>

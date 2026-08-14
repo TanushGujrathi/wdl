@@ -1,0 +1,101 @@
+body {
+    font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro',Menlo, Consolas, 'Courier New', monospace;
+}
+
+.navbar {
+    background-color: #333;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 12px;
+    display: inline-block;
+}
+
+.navbar a:hover {
+    color: #000;
+    background-color: #ffc107;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.site-header {
+    text-align: center;
+}
+
+.main-content {
+    background-color: #fffcdf;
+    padding: 15px;
+    border-radius: 5px;
+    border: 5px solid #ffc107;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    text-align: center;
+}
+
+.map-section {
+    text-align: center;
+}
+
+.about-box {
+    padding: 10px;
+}
+
+.objective-box {
+    background-color: #d4edda;
+    border: 2px solid #28a745;
+}
+
+.sources-box {
+    background-color: #d1ecf1;
+    border: 2px solid #17a2b8;
+}
+
+.stakeholder-box {
+    background-color: #f8d7da;
+    border: 2px solid #dc3545;
+}
+
+.warning {
+    color: red;
+}
+
+.black-text {
+    color: black;
+}
+
+.blue-text {
+    color: blue;
+}
+
+.alert-orange {
+    background-color: #ffe8a1;
+}
+
+.alert-red {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.alert-yellow {
+    background-color: #d4edda;
+    color: #155724;
+}
