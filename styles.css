@@ -78,6 +78,10 @@ table {
     color: red;
 }
 
+mark {
+    color: inherit;
+}
+
 .black-text {
     color: black;
 }
@@ -96,6 +100,5 @@ table {
 }
 
 .alert-yellow {
-    background-color: #d4edda;
-    color: #155724;
+    background-color: #eef398;
 }
