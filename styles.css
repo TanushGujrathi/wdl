@@ -2,6 +2,10 @@ body {
     font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro',Menlo, Consolas, 'Courier New', monospace;
 }
 
+h1, h2, h3 {
+    color: #0056b3;
+}
+
 .navbar {
     background-color: #333;
     padding: 10px;
@@ -55,6 +59,18 @@ table {
     text-align: center;
 }
 
+.map-section img {
+    width: 100%;
+    max-width: 600px;
+    border: 3px solid #333;
+    border-radius: 8px;
+    transition: transform 0.4s ease;
+}
+
+.map-section img:hover {
+    transform: scale(1.05); /* Hover zoom effect */
+}
+
 .about-box {
     padding: 10px;
 }
@@ -101,4 +117,17 @@ mark {
 
 .alert-yellow {
     background-color: #eef398;
+}
+
+.about-box {
+
+    display: inline-block;
+    width: 30%;
+    margin: 1%;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.1);
+    vertical-align: top;
+
 }
