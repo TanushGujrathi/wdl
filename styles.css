@@ -2,6 +2,8 @@ body {
     font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro',Menlo, Consolas, 'Courier New', monospace;
 }
 
+/*font from google*/
+
 h1, h2, h3 {
     color: #0056b3;
 }
@@ -130,4 +132,20 @@ mark {
     box-shadow: 4px 4px 10px rgba(0,0,0,0.1);
     vertical-align: top;
 
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 2px #dc3545; background-color: #ffe8a1; }
+    50% { box-shadow: 0 0 5px #dc3545, 0 0 10px #dc3545; background-color: #ffcccc; }
+    100% { box-shadow: 0 0 2px #dc3545; background-color: #ffe8a1; }
+}
+
+.glowing-offer {
+    animation: glow 3s infinite;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.2em;
+    text-shadow: 1px 1px 2px #fff;
+    text-align: center;
+    border: 2px solid #dc3545;
 }

@@ -7,6 +7,8 @@
     <title>Climate Intelligence Portal - Heatwave Monitoring</title>
 
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="layout.css">
+    
 </head>
 
 <body>
@@ -28,25 +30,30 @@
         <p style="color: #f40460; font-style: italic; margin-top: 5px;">"Predict. Prepare. Protect."</p>
     </header>
 
-    <main class="main-content">
-        <section>
-            <h2>Current Monitoring Season</h2>
+    <div class="layout-container">
+        
+        <aside class="sidebar-left">
+            <h3>Quick Updates</h3>
+            <ul>
+                <li>Server: Online</li>
+                <li>Last Sync: Just now</li>
+                <li>Active Warnings: 1</li>
+            </ul>
+        </aside>
 
-            <p>
-                <strong>Monitoring Year:</strong> 2026
-            </p>
+        <main class="content-right">
+            <section>
+                <h2>Current Monitoring Season</h2>
+                <p><strong>Monitoring Year:</strong> 2026</p>
+                <p class="warning">
+                    <strong class="black-text">Season Status:</strong>
+                    <span style="font-weight: bold; color: #dc3545;">Summer / High-Temperature Alert Phase</span>
+                </p>
+                <p><strong>Server Telemetry Status:</strong> Active sync with ground sensors and IMD databases</p>
+            </section>
+        </main>
 
-            <p class="warning">
-                <strong class="black-text">Season Status:</strong>
-                <span style="font-weight: bold; color: #dc3545;">Summer / High-Temperature Alert Phase</span>
-            </p>
-
-            <p>
-                <strong>Server Telemetry Status:</strong>
-                Active sync with ground sensors and IMD databases
-            </p>
-        </section>
-    </main>
+    </div>
 
     <footer>
         <p>End of Page</p>

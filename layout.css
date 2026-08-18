@@ -1,0 +1,28 @@
+.layout-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.sidebar-left {
+    flex: 1;
+    min-width: 200px;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.content-right {
+    flex: 3;
+    background-color: #fffcdf;
+    padding: 15px;
+    border-radius: 5px;
+    border: 5px solid #ffc107;
+}
+
+footer {
+    width: 100%;
+    clear: both;
+}
