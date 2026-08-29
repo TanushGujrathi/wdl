@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Hotspot Map</title>
-
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -28,62 +26,52 @@
     </header>
 
     <main class="main-content">
-
         <section class="map-section">
 
-            <img
-                src="data:image/svg+xml;utf8,
-                <svg xmlns='http://www.w3.org/2000/svg'
-                width='600' height='300'>
-                <rect width='300' height='300' fill='%23ffcc00'/>
-                <rect x='300' width='300' height='300'
-                fill='%23ff5555'/>
-                <text x='150' y='150'
-                font-family='sans-serif'
-                font-size='18'
-                text-anchor='middle'
-                fill='%23000'>
-                North Zone (Click Here)
-                </text>
-                <text x='450' y='150'
-                font-family='sans-serif'
-                font-size='18'
-                text-anchor='middle'
-                fill='%23fff'>
-                Central Zone (Click Here)
-                </text>
-                </svg>"
-                usemap="#hotspotmap"
-                alt="Heatwave Hotspot Map Area"
+            <img 
+                src="media/final hotspot map.png" 
+                usemap="#image-map" 
+                alt="India Heatwave Hotspot Map"
+                style="width: auto; max-width: none;" 
             >
 
-            <map name="hotspotmap">
+            <map name="image-map">
 
-                <area
-                    shape="rect"
-                    coords="0,0,300,300"
-                    href="alert-details.html"
-                    alt="North Zone Alert"
-                    title="Click for North Zone Alerts"
+                <area 
+                    shape="poly" 
+                    coords="239,670,123,591,70,498,110,443,154,450,199,392,260,274,235,217,304,82,397,29,369,108,455,92,446,223,473,337,581,465,587,574,565,643,548,642,541,612,501,574,434,570,416,550,423,529,363,511,344,529,335,573,336,598,323,620,305,642,295,624,303,597,285,592,273,625,263,653" 
+                    href="forecast.html" 
+                    alt="north zone" 
+                    title="north zone"
                 >
 
-                <area
-                    shape="rect"
-                    coords="300,0,600,300"
-                    href="forecast.html"
-                    alt="Central Zone Forecast"
-                    title="Click for Central Zone Forecast"
+                <area 
+                    shape="poly" 
+                    coords="241,728,354,800,515,997,636,879,770,749,747,586,729,537,579,485,553,635,533,585,386,510,319,556,276,605,256,644" 
+                    href="alert-details.html" 
+                    alt="central zone" 
+                    title="central zone"
                 >
 
+                <area 
+                    shape="poly" 
+                    coords="233,1181,147,908,84,771,11,626,161,595,244,677,347,760,403,864,359,1126,328,1202,278,1216" 
+                    href="forecast.html" 
+                    alt="west zone" 
+                    title="west zone"
+                >
             </map>
 
             <p>
-                Click on either side of the map graphic
+                Click on the colored zones on the map
                 to jump to regional reports.
+            </p>
+            
+            <p>
+                <small>Map telemetry updated on 19<sup>th</sup> August, 2026<sub>IST</sub>.</small>
             </p>
 
         </section>
-
     </main>
 
     <footer>
