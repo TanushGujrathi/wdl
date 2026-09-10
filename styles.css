@@ -70,7 +70,7 @@ table {
 }
 
 .map-section img:hover {
-    transform: scale(1.05); /* Hover zoom effect */
+    transform: scale(1.05); 
 }
 
 .about-box {

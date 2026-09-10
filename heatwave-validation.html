@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heatwave Monitoring Data Entry</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="form.css">
+    
+    <style>
+        .error-msg {
+            color: #dc3545;
+            font-size: 0.85em;
+            font-weight: bold;
+            display: block;
+            margin-top: 2px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="alert-details.html">Alert Details</a>
+        <a href="about-system.html">About System</a>
+        <a href="sources.html">Data Sources</a>
+        <a href="hotspot-map.html">Hotspot Map</a>
+        <a href="forecast.html">Forecast Table</a>
+        <a href="subscribe.html">Subscription</a>
+        <a href="heatwave-validation.html">Data Entry</a>
+        <a href="media.html">Media Portal</a>
+        <a href="navigation.html">Portal Index</a>
+    </nav>
+
+    <header class="site-header">
+        <h1>Climate Intelligence Data Entry</h1>
+    </header>
+
+    <main class="main-content">
+        <section>
+            <form id="heatwaveForm" novalidate>
+                
+                <fieldset>
+                    <legend>Observer & Station Details</legend>
+                    
+                    <label for="observerName">Observer Name:</label>
+                    <input type="text" id="observerName" name="observerName" required>
+                    <span id="nameError" class="error-msg"></span>
+
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" required>
+                    <span id="emailError" class="error-msg"></span>
+
+                    <label for="mobile">Mobile Number:</label>
+                    <input type="tel" id="mobile" name="mobile" required>
+                    <span id="mobileError" class="error-msg"></span>
+
+                    <label for="awsId">AWS Station ID:</label>
+                    <input type="text" id="awsId" name="awsId" placeholder="e.g., AWS001" required>
+                    <span id="awsError" class="error-msg"></span>
+                </fieldset>
+
+                <br>
+
+                <fieldset>
+                    <legend>Weather Observation Data</legend>
+                    
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" name="location" required>
+                    <span id="locationError" class="error-msg"></span>
+
+                    <label for="obsDate">Observation Date:</label>
+                    <input type="date" id="obsDate" name="obsDate" required>
+                    <span id="dateError" class="error-msg"></span>
+
+                    <label for="maxTemp">Maximum Temperature (°C):</label>
+                    <input type="number" id="maxTemp" name="maxTemp" step="0.1" required>
+                    <span id="tempError" class="error-msg"></span>
+
+                    <label for="humidity">Humidity (%):</label>
+                    <input type="number" id="humidity" name="humidity" min="0" max="100" required>
+                    <span id="humidityError" class="error-msg"></span>
+
+                    <label for="alertLevel">Heatwave Alert Level:</label>
+                    <select id="alertLevel" name="alertLevel" required>
+                        <option value="">-- Select Alert Level --</option>
+                        <option value="normal">Normal</option>
+                        <option value="yellow">Yellow Alert (Watch)</option>
+                        <option value="orange">Orange Alert (Be Prepared)</option>
+                        <option value="red">Red Alert (Severe)</option>
+                    </select>
+                    <span id="alertError" class="error-msg"></span>
+                </fieldset>
+
+                <br>
+
+                <input type="submit" value="Submit Observation">
+                <input type="reset" value="Reset Form">
+                
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>End of Page</p>
+        <p>Tanush Gujrathi 16010125071 SY A3 KJSCE</p>
+    </footer>
+
+    <script src="heatwave-validation.js"></script>
+
+</body>
+</html>

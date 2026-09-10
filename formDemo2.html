@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Contact</title>
+
+<style>
+
+    body{
+        background:#f4f8f2;
+    }
+
+    form{
+        width:60%;
+        margin:auto;
+    }
+
+    input,textarea,select{
+        width:100%;
+        padding:10px;
+        margin:8px 0;
+    }
+
+    button{
+        background:green;
+        color:white;
+        padding:10px 20px;
+        border:none;
+    }
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header" style="text-align: center;">
+
+<h1>Contact Us</h1>
+
+</div>
+
+<div class="container">
+
+<form name="Form1" onsubmit="return validateForm()" method="post" novalidate>
+
+<label for="name">Name</label>
+
+<input type="text" id="fullname" name="fullname">
+
+<label for="email">Email</label>
+
+<input type="email" id="email" name="email">
+
+<label for="district">District</label>
+
+<select id="district" name="district">
+
+<option value="">Select District</option>
+
+<option value="Nagpur">Nagpur</option>
+
+<option value="Pune">Pune</option>
+
+<option value="Nashik">Nashik</option>
+
+</select>
+
+<label for="message">Message</label>
+
+<textarea id="message" name="message" rows="5"></textarea>
+
+<button type="submit">Submit</button>
+
+</form>
+
+</div>
+
+<div class="footer" style="text-align: center;">
+
+Agriculture Portal
+
+</div>
+
+<script>
+    function validateForm(){
+
+        var name = document.getElementById("fullname").value.trim();
+        var email = document.getElementById("email").value.trim();
+        var district = document.getElementById("district").value.trim();
+        var message = document.getElementById("message").value.trim();
+
+        var emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if(name===""){
+            alert("Please enter your name.");
+            return false;
+        }
+        
+        if(email===""){
+            alert("Please enter your email.");
+            return false;
+        }
+
+        if(!emailPattern.test(email)){
+            alert("Invalid Email ID");
+            return false;
+        }
+
+        if(district===""){
+            alert("Please select district");
+            return false;   
+        }
+
+        if(message===""){
+            alert("Please enter a message");
+            return false;
+        }
+
+        alert("Form submitted successfully!");
+        return true;
+
+    }
+    
+</script>
+
+</body>
+
+</html>

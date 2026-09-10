@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="form.css">
 
+    <script src="validation.js"></script>
+
 </head>
 
 <body>
@@ -21,6 +23,7 @@
         <a href="hotspot-map.html">Hotspot Map</a>
         <a href="forecast.html">Forecast Table</a>
         <a href="subscribe.html">Subscription</a>
+        <a href="heatwave-validation.html">Data Entry</a>
         <a href="media.html">Media Portal</a>
         <a href="navigation.html">Portal Index</a>
     </nav>
@@ -33,7 +36,7 @@
 
         <section>
 
-            <form action="#" method="post">
+            <form action="#" method="post" onsubmit="return validateForm()" novalidate>
 
                 <fieldset>
 
@@ -42,34 +45,25 @@
                     <p>
                         <label for="fullname">Full Name:</label><br>
 
-                        <input
-                            type="text"
-                            id="fullname"
-                            name="fullname"
-                            required
-                        >
+                        <input type="text" id="fullname" name="fullname" required>
+
+                        <span id = "nameError" class="error-msg"></span>
                     </p>
 
                     <p>
                         <label for="email">Email Address:</label><br>
 
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            required
-                        >
+                        <input type="email" id="email" name="email" required>
+
+                        <span id = "emailError" class="error-msg"></span>
                     </p>
 
                     <p>
                         <label for="mobile">Mobile Number:</label><br>
 
-                        <input
-                            type="tel"
-                            id="mobile"
-                            name="mobile"
-                            required
-                        >
+                        <input type="tel" id="mobile" name="mobile" required>
+
+                        <span id = "mobileError" class="error-msg"></span>
                     </p>
 
                 </fieldset>
@@ -81,9 +75,9 @@
                     <legend>Alert Preferences</legend>
 
                     <p>
-                        <label for="region">
-                            Select Monitoring Region:
-                        </label><br>
+                        <label for="region"> Select Monitoring Region: </label>
+                        
+                        <br>
 
                         <select
                             id="region"
@@ -106,6 +100,8 @@
                                 West Zone (Mumbai)
                             </option>
                         </select>
+
+                        <span id = "regionError" class="error-msg"></span>
                     </p>
 
                     <p>

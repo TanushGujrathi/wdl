@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation Demo</title>
+    
+    <style>
+        .error-msg {
+            color: #dc3545;
+            font-size: 0.85em;
+            font-family: sans-serif;
+            margin-left: 5px;
+        }
+        
+        input {
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form onsubmit="return validateNames()" novalidate>
+        
+        <label for="fname">First name:</label><br>
+
+        <input type="text" id="fname" name="fname">
+
+        <span id="fnameError" class="error-msg"></span><br>
+        
+        <label for="lname">Last name:</label><br>
+
+        <input type="text" id="lname" name="lname">
+        
+        <span id="lnameError" class="error-msg"></span><br>
+
+        <label for="gender">Gender:
+
+            <input type="radio" id="ma" name="gender" value="male">male
+
+            <input type="radio" id="fe" name="gender" value="female">female
+
+            <input type="radio" id="ot" name="gender" value="other">other
+
+        </label><br>
+        
+        <button type="submit">Submit</button>
+        
+    </form>
+
+    <script>
+        function validateNames() {
+            let isValid = true;
+            
+            document.getElementById("fnameError").textContent = "";
+            document.getElementById("lnameError").textContent = "";
+            
+            let fname = document.getElementById("fname").value.trim();
+            let lname = document.getElementById("lname").value.trim();
+            
+            let lettersOnly = /^[A-Za-z]+$/;
+            
+            if (fname === "") {
+                document.getElementById("fnameError").textContent = "First name cannot be empty.";
+                isValid = false;
+            } else if (!lettersOnly.test(fname)) {
+                document.getElementById("fnameError").textContent = "First name must contain letters only.";
+                isValid = false;
+            }
+            
+            if (lname === "") {
+                document.getElementById("lnameError").textContent = "Last name cannot be empty.";
+                isValid = false;
+            } else if (!lettersOnly.test(lname)) {
+                document.getElementById("lnameError").textContent = "Last name must contain letters only.";
+                isValid = false;
+            }
+            
+            if (isValid) {
+                alert("Validation successful!");
+                return false;
+            }
+            
+            return isValid;
+        }
+    </script>
+
+</body>
+</html>

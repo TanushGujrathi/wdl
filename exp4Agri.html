@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Farmer Registration - Smart Irrigation Advisory System</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: inline-block; width: 150px; }
+        .error { color: red; font-size: 0.85em; margin-left: 10px; }
+        .invalid { border: 2px solid red; }
+    </style>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="form.css">
+
+</head>
+<body style="background-color: rgb(221, 255, 169);">
+
+    <h2>Farmer Registration Form</h2>
+    <form id="farmerForm">
+        <fieldset>
+            <legend>Personal & Farm Information</legend>
+            
+            <div class="form-group">
+                <label for="farmerName">Farmer Name:</label>
+                <input type="text" id="farmerName" name="farmerName">
+                <span id="nameError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="mobile">Mobile Number:</label>
+                <input type="text" id="mobile" name="mobile" maxlength="10">
+                <span id="mobileError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="text" id="email" name="email">
+                <span id="emailError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="plotId">Plot ID:</label>
+                <input type="text" id="plotId" name="plotId">
+                <span id="plotError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="village">Village:</label>
+                <input type="text" id="village" name="village">
+                <span id="villageError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="cropStage">Crop Stage:</label>
+                <select id="cropStage" name="cropStage">
+                    <option value="">--Select--</option>
+                    <option value="Vegetative">Vegetative</option>
+                    <option value="Flowering">Flowering</option>
+                    <option value="Fruiting">Fruiting</option>
+                </select>
+                <span id="cropError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="soilType">Soil Type:</label>
+                <select id="soilType" name="soilType">
+                    <option value="">--Select--</option>
+                    <option value="Clay">Clay</option>
+                    <option value="Sandy">Sandy</option>
+                    <option value="Loam">Loam</option>
+                </select>
+                <span id="soilError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="irrigation">Irrigation Method:</label>
+                <select id="irrigation" name="irrigation">
+                    <option value="">--Select--</option>
+                    <option value="Drip">Drip</option>
+                    <option value="Sprinkler">Sprinkler</option>
+                    <option value="Flood">Flood</option>
+                </select>
+                <span id="irrigationError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="soilMoisture">Soil Moisture (%):</label>
+                <input type="number" id="soilMoisture" name="soilMoisture" min="0" max="100">
+                <span id="moistureError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="regDate">Registration Date:</label>
+                <input type="date" id="regDate" name="regDate">
+                <span id="dateError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="farmPhoto">Farm Photo:</label>
+                <input type="file" id="farmPhoto" name="farmPhoto" accept="image/*">
+            </div>
+
+        </fieldset>
+
+        <br>
+        
+        <button type="submit">Submit</button>
+        <button type="reset" id="resetBtn">Reset</button>
+    </form>
+
+    <script>
+        document.getElementById('farmerForm').addEventListener('submit', function(event) {
+            let isValid = true;
+
+            function validateField(fieldId, errorId, condition, errorMessage) {
+                const field = document.getElementById(fieldId);
+                const errorSpan = document.getElementById(errorId);
+                if (!condition) {
+                    errorSpan.textContent = errorMessage;
+                    errorSpan.style.display = 'inline';
+                    field.classList.add('invalid');
+                    isValid = false;
+                } else {
+                    errorSpan.style.display = 'none';
+                    field.classList.remove('invalid');
+                }
+            }
+
+            const name = document.getElementById('farmerName').value.trim();
+            const nameRegex = /^[A-Za-z\s]+$/;
+            validateField('farmerName', 'nameError', name !== "" && nameRegex.test(name), "Name cannot be empty and must contain only letters and spaces.");
+
+            const plotId = document.getElementById('plotId').value.trim();
+            validateField('plotId', 'plotError', plotId !== "", "Plot ID cannot be empty.");
+
+            const village = document.getElementById('village').value.trim();
+            validateField('village', 'villageError', village !== "", "Village cannot be empty.");
+
+            const mobile = document.getElementById('mobile').value.trim();
+            const mobileRegex = /^[0-9]{10}$/;
+            validateField('mobile', 'mobileError', mobileRegex.test(mobile), "Enter a valid 10-digit mobile number.");
+
+            const email = document.getElementById('email').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            validateField('email', 'emailError', emailRegex.test(email), "Enter a valid email address.");
+
+            const cropStage = document.getElementById('cropStage').value;
+            validateField('cropStage', 'cropError', cropStage !== "", "Please select a crop stage.");
+
+            const soilType = document.getElementById('soilType').value;
+            validateField('soilType', 'soilError', soilType !== "", "Please select a soil type.");
+
+            const irrigation = document.getElementById('irrigation').value;
+            validateField('irrigation', 'irrigationError', irrigation !== "", "Please select an irrigation method.");
+
+            const regDate = document.getElementById('regDate').value;
+            const today = new Date().toISOString().split('T')[0];
+            validateField('regDate', 'dateError', regDate !== "" && regDate <= today, "Date is required and cannot be in the future.");
+
+            if (!isValid) {
+                event.preventDefault();
+            } else {
+                event.preventDefault();
+                alert("Success: Farmer registered successfully!");
+            }
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', function() {
+            const spans = document.querySelectorAll('.error');
+            const inputs = document.querySelectorAll('.invalid');
+            spans.forEach(span => span.style.display = 'none');
+            inputs.forEach(input => input.classList.remove('invalid'));
+        });
+    </script>
+</body>
+</html>
