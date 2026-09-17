@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heatwave Analysis</title>
+    
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
+    
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="alert-details.html">Alert Details</a>
+        <a href="about-system.html">About System</a>
+        <a href="sources.html">Data Sources</a>
+        <a href="hotspot-map.html">Hotspot Map</a>
+        <a href="forecast.html">Forecast Table</a>
+        <a href="subscribe.html">Subscription</a>
+        <a href="heatwave-validation.html">Data Entry</a>
+        <a href="media.html">Media Portal</a>
+        <a href="navigation.html">Portal Index</a>
+    </nav>
+
+    <header class="site-header">
+        <h1>Heatwave Analysis</h1>
+    </header>
+
+    <h2>Heatwave Temperature Analysis</h2>
+    <div id="output"></div>
+
+    <form>
+        <input type="text" id="loc" placeholder="Location" required>
+        <input type="number" id="temp" placeholder="Current Temperature" required>
+        <input type="number" id="hum" placeholder="Humidity" required>
+         <input type="date" id="userDate" name="userDate" required>
+        <button onclick="submitDetails()">Submit</button>
+    </form>
+    
+    <script>
+        
+        const tt = 37;
+
+        function submitDetails(){
+            const Location = document.getElementById('loc').value;
+            const temp = document.getElementById('temp').value;
+            const hum = document.getElementById('hum').value;
+            const date = document.getElementById('userDate').value;
+
+            let diff = tt-temp;
+
+            alert("Temp diff: " + diff); 
+            document.write("Location: " + Location)
+            document.write("Temperature: " + temp)
+            document.write("Humidity: " + hum)
+            document.write("Date: " + date)
+            document.write("Temperature Diff: " + diff)
+
+            if(temp>tt){
+                document.write("Temperature crossed Threshold")
+            }else{
+                document.write("Temperature did not cross Threshold")
+
+            }
+
+        }
+
+    </script>
+
+    <footer>
+        <p>End of Page</p>
+        <p>Tanush Gujrathi 16010125071 SY A3 KJSCE</p>
+    </footer>
+
+</body>
+</html>
