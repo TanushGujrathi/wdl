@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Climate Registration Validation</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+
+        body {
+            text-align: center;
+        }
+
+        .form-box {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #f5f5f5;
+            border-radius: 10px;
+        }
+
+        input {
+            display: block;
+            width: 90%;
+            margin: 10px auto;
+            padding: 10px;
+        }
+
+        button {
+            padding: 10px 25px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+   <nav class="navbar">
+
+        <a href="index.html">Home</a>
+
+        <div class="dropdown">
+
+        <button class="dropbtn"> Portal ▾ </button>
+
+            <div class="dropdown-content">
+
+                <a href="alert-details.html"> Alert Details </a>
+                <a href="about-system.html"> About System</a>
+                <a href="sources.html"> Data Sources </a>
+                <a href="hotspot-map.html"> Hotspot Map </a>
+                <a href="forecast.html"> Forecast Table </a>
+                <a href="media.html"> Media Portal </a>
+                <a href="navigation.html"> Portal Index</a>
+
+            </div>
+
+        </div>
+
+        <div class="dropdown">
+
+        <button class="dropbtn"> Analysis & Alerts ▾ </button>
+
+            <div class="dropdown-content">
+
+                <a href="heatwave_analysis.html"> Temperature Analysis </a>
+                <a href="heatwave_warning.html"> Heatwave Risk & Warning </a>
+                <a href="climate_object.html"> Climate Data Object </a>
+                <a href="temperature_analysis.html"> Temperature Array Analysis </a>
+
+            </div>
+
+        </div>
+
+        <div class="dropdown">
+
+            <button class="dropbtn"> Data & Registration ▾ </button>
+
+            <div class="dropdown-content">
+
+                <a href="heatwave-validation.html"> Heatwave Monitoring Data Entry </a>
+                <a href="climate_validation.html"> Climate User Validation </a>
+                <a href="climate_registration.html"> Climate Alert Registration </a>
+
+            </div>
+
+        </div>
+
+        <a href="subscribe.html">
+            Subscription
+        </a>
+
+    </nav>
+
+
+    <header class="site-header">
+
+        <h1>Climate User Data Validation</h1>
+
+    </header>
+
+
+    <div class="form-box">
+
+        <form id="registrationForm">
+
+            <input type="text" id="userName" placeholder="User Name">
+
+            <input type="text" id="mobile" placeholder="Mobile Number">
+
+            <input type="text" id="email" placeholder="Email Address">
+
+            <input type="text" id="location" placeholder="Location">
+
+            <input type="text" id="userId" placeholder="User ID (CLM-1234)">
+
+            <input type="text" id="pin" placeholder="PIN Code">
+
+            <button type="submit">
+                Validate Registration
+            </button>
+
+        </form>
+
+
+        <div id="result"></div>
+
+    </div>
+
+    <footer>
+        <p>End of Page</p>
+        <p>Tanush Gujrathi 16010125071 SY A3 KJSCE</p>
+    </footer>
+
+    <script>
+
+        document
+            .getElementById("registrationForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                let userName = document.getElementById("userName").value.trim();
+
+                let mobile = document.getElementById("mobile").value.trim();
+
+                let email = document.getElementById("email").value.trim();
+
+                let location = document.getElementById("location").value.trim();
+
+                let userId = document.getElementById("userId").value.trim();
+
+                let pin = document.getElementById("pin").value.trim();
+
+                let namePattern = /^[A-Za-z ]+$/;
+
+                let mobilePattern = /^[6-9][0-9]{9}$/;
+
+                let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                let locationPattern = /^[A-Za-z ]+$/;
+
+                let userIdPattern = /^CLM-[0-9]{4}$/;
+
+                let pinPattern = /^[0-9]{6}$/;
+
+                let errors = [];
+
+                if ( userName === "" || !namePattern.test(userName) ) {
+
+                    errors.push( "User Name must contain only alphabets and spaces." );
+
+                }
+
+                if (!mobilePattern.test(mobile)) {
+
+                    errors.push( "Mobile Number must contain exactly 10 digits." );
+
+                }
+
+                if (!emailPattern.test(email)) {
+
+                    errors.push( "Enter a valid Email Address." );
+
+                }
+
+                if ( location === "" || !locationPattern.test(location) ) {
+
+                    errors.push( "Location must contain only alphabets and spaces." );
+
+                }
+
+                if (!userIdPattern.test(userId)) {
+
+                    errors.push( "User ID must follow CLM-1234 format." );
+
+                }
+
+                if (!pinPattern.test(pin)) {
+
+                    errors.push( "PIN Code must contain exactly 6 digits." );
+
+                }
+
+                if (errors.length > 0) {
+
+                    document.getElementById("result").innerHTML =
+                        "<p>Validation Errors:</p>" +
+                        "<ul><li>" +
+                        errors.join("</li><li>") +
+                        "</li></ul>";
+
+                }
+
+                else {
+
+                    document.getElementById("result").innerHTML = "Registration Successful!";
+
+                }
+
+            });
+
+    </script>
+
+</body>
+
+</html>

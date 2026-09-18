@@ -1,84 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heatwave Analysis</title>
-    
+    <title>Heatwave Temperature Analysis</title>
+
     <link rel="stylesheet" href="styles.css">
 
     <style>
-        body{
+        body {
             text-align: center;
         }
+
+        .analysis-box {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 10px;
+            background: #f5f5f5;
+        }
+
+        input {
+            display: block;
+            width: 80%;
+            margin: 12px auto;
+            padding: 10px;
+        }
+
+        button {
+            padding: 10px 25px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 25px;
+            font-size: 18px;
+            line-height: 1.8;
+        }
     </style>
-    
 </head>
 
 <body>
 
     <nav class="navbar">
+
         <a href="index.html">Home</a>
-        <a href="alert-details.html">Alert Details</a>
-        <a href="about-system.html">About System</a>
-        <a href="sources.html">Data Sources</a>
-        <a href="hotspot-map.html">Hotspot Map</a>
-        <a href="forecast.html">Forecast Table</a>
-        <a href="subscribe.html">Subscription</a>
-        <a href="heatwave-validation.html">Data Entry</a>
-        <a href="media.html">Media Portal</a>
-        <a href="navigation.html">Portal Index</a>
+
+        <div class="dropdown">
+
+        <button class="dropbtn"> Portal ▾ </button>
+
+            <div class="dropdown-content">
+
+                <a href="alert-details.html"> Alert Details </a>
+                <a href="about-system.html"> About System</a>
+                <a href="sources.html"> Data Sources </a>
+                <a href="hotspot-map.html"> Hotspot Map </a>
+                <a href="forecast.html"> Forecast Table </a>
+                <a href="media.html"> Media Portal </a>
+                <a href="navigation.html"> Portal Index</a>
+
+            </div>
+
+        </div>
+
+        <div class="dropdown">
+
+        <button class="dropbtn"> Analysis & Alerts ▾ </button>
+
+            <div class="dropdown-content">
+
+                <a href="heatwave_analysis.html"> Temperature Analysis </a>
+                <a href="heatwave_warning.html"> Heatwave Risk & Warning </a>
+                <a href="climate_object.html"> Climate Data Object </a>
+                <a href="temperature_analysis.html"> Temperature Array Analysis </a>
+
+            </div>
+
+        </div>
+
+        <div class="dropdown">
+
+            <button class="dropbtn"> Data & Registration ▾ </button>
+
+            <div class="dropdown-content">
+
+                <a href="heatwave-validation.html"> Heatwave Monitoring Data Entry </a>
+                <a href="climate_validation.html"> Climate User Validation </a>
+                <a href="climate_registration.html"> Climate Alert Registration </a>
+
+            </div>
+
+        </div>
+
+        <a href="subscribe.html">
+            Subscription
+        </a>
+
     </nav>
 
     <header class="site-header">
-        <h1>Heatwave Analysis</h1>
+        <h1>Heatwave Temperature Analysis</h1>
     </header>
 
-    <h2>Heatwave Temperature Analysis</h2>
-    <div id="output"></div>
+    <div class="analysis-box">
 
-    <form>
-        <input type="text" id="loc" placeholder="Location" required>
-        <input type="number" id="temp" placeholder="Current Temperature" required>
-        <input type="number" id="hum" placeholder="Humidity" required>
-         <input type="date" id="userDate" name="userDate" required>
-        <button onclick="submitDetails()">Submit</button>
-    </form>
-    
-    <script>
-        
-        const tt = 37;
+        <input type="text"
+               id="location"
+               placeholder="Location">
 
-        function submitDetails(){
-            const Location = document.getElementById('loc').value;
-            const temp = document.getElementById('temp').value;
-            const hum = document.getElementById('hum').value;
-            const date = document.getElementById('userDate').value;
+        <input type="number"
+               id="temperature"
+               placeholder="Current Temperature (°C)">
 
-            let diff = tt-temp;
+        <input type="number"
+               id="threshold"
+               placeholder="Heatwave Threshold (°C)"
+               value="37">
 
-            alert("Temp diff: " + diff); 
-            document.write("Location: " + Location)
-            document.write("Temperature: " + temp)
-            document.write("Humidity: " + hum)
-            document.write("Date: " + date)
-            document.write("Temperature Diff: " + diff)
+        <input type="number"
+               id="humidity"
+               placeholder="Humidity (%)">
 
-            if(temp>tt){
-                document.write("Temperature crossed Threshold")
-            }else{
-                document.write("Temperature did not cross Threshold")
+        <input type="date"
+               id="monitoringDate">
 
-            }
+        <button onclick="analyzeTemperature()">
+            Analyze Temperature
+        </button>
 
-        }
+        <div id="result"></div>
 
-    </script>
+    </div>
 
     <footer>
         <p>End of Page</p>
         <p>Tanush Gujrathi 16010125071 SY A3 KJSCE</p>
     </footer>
 
+    <script>
+
+        function analyzeTemperature() {
+
+            let location = document.getElementById("location").value;
+
+            let currentTemperature = Number(document.getElementById("temperature").value);
+
+            let threshold = Number(document.getElementById("threshold").value);
+
+            let humidity = Number(document.getElementById("humidity").value);
+
+            let monitoringDate = document.getElementById("monitoringDate").value;
+
+            let difference = currentTemperature - threshold;
+
+            let status;
+
+            if (currentTemperature >= threshold) {
+
+                status = "Heatwave Condition Detected";
+
+            } else {
+
+                status = "Normal Temperature Condition";
+
+            }
+
+            alert(
+                "Heatwave Status: " + status +
+                "\n\nLocation: " + location +
+                "\nCurrent Temperature: "
+                + currentTemperature + "°C" +
+                "\nHeatwave Threshold: "
+                + threshold + "°C" +
+                "\nTemperature Difference: "
+                + difference + "°C"
+            );
+
+            console.log("Location: " + location);
+
+            console.log(
+                "Current Temperature: "
+                + currentTemperature + "°C"
+            );
+
+            console.log(
+                "Heatwave Threshold: "
+                + threshold + "°C"
+            );
+
+            console.log(
+                "Temperature Difference: "
+                + difference + "°C"
+            );
+
+            console.log(
+                "Humidity: " + humidity + "%"
+            );
+
+            console.log(
+                "Monitoring Date: " + monitoringDate
+            );
+
+            console.log(
+                "Status: " + status
+            );
+
+            document.getElementById("result").innerHTML =
+
+                "<strong>Location:</strong> "
+                + location + "<br>" +
+
+                "<strong>Current Temperature:</strong> "
+                + currentTemperature + "°C<br>" +
+
+                "<strong>Heatwave Threshold:</strong> "
+                + threshold + "°C<br>" +
+
+                "<strong>Temperature Difference:</strong> "
+                + difference + "°C<br>" +
+
+                "<strong>Humidity:</strong> "
+                + humidity + "%<br>" +
+
+                "<strong>Monitoring Date:</strong> "
+                + monitoringDate + "<br>" +
+
+                "<strong>Status:</strong> "
+                + status;
+
+
+            /*
+
+            document.write(
+
+                "<h2>Heatwave Monitoring Result</h2>" +
+
+                "<p><strong>Location:</strong> "
+                + location + "</p>" +
+
+                "<p><strong>Current Temperature:</strong> "
+                + currentTemperature + "°C</p>" +
+
+                "<p><strong>Heatwave Threshold:</strong> "
+                + threshold + "°C</p>" +
+
+                "<p><strong>Temperature Difference:</strong> "
+                + difference + "°C</p>" +
+
+                "<p><strong>Humidity:</strong> "
+                + humidity + "%</p>" +
+
+                "<p><strong>Monitoring Date:</strong> "
+                + monitoringDate + "</p>" +
+
+                "<p><strong>Status:</strong> "
+                + status + "</p>"
+            );
+
+            */
+
+        }
+
+    </script>
+
 </body>
+
 </html>

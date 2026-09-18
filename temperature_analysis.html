@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Temperature Analysis</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+
+        body {
+            text-align: center;
+        }
+
+        .analysis-box {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #f5f5f5;
+            border-radius: 10px;
+        }
+
+        #output {
+            text-align: left;
+            line-height: 2;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+   <nav class="navbar">
+
+        <a href="index.html">Home</a>
+
+        <div class="dropdown">
+
+        <button class="dropbtn"> Portal ▾ </button>
+
+            <div class="dropdown-content">
+
+                <a href="alert-details.html"> Alert Details </a>
+                <a href="about-system.html"> About System</a>
+                <a href="sources.html"> Data Sources </a>
+                <a href="hotspot-map.html"> Hotspot Map </a>
+                <a href="forecast.html"> Forecast Table </a>
+                <a href="media.html"> Media Portal </a>
+                <a href="navigation.html"> Portal Index</a>
+
+            </div>
+
+        </div>
+
+        <div class="dropdown">
+
+        <button class="dropbtn"> Analysis & Alerts ▾ </button>
+
+            <div class="dropdown-content">
+
+                <a href="heatwave_analysis.html"> Temperature Analysis </a>
+                <a href="heatwave_warning.html"> Heatwave Risk & Warning </a>
+                <a href="climate_object.html"> Climate Data Object </a>
+                <a href="temperature_analysis.html"> Temperature Array Analysis </a>
+
+            </div>
+
+        </div>
+
+        <div class="dropdown">
+
+            <button class="dropbtn"> Data & Registration ▾ </button>
+
+            <div class="dropdown-content">
+
+                <a href="heatwave-validation.html"> Heatwave Monitoring Data Entry </a>
+                <a href="climate_validation.html"> Climate User Validation </a>
+                <a href="climate_registration.html"> Climate Alert Registration </a>
+
+            </div>
+
+        </div>
+
+        <a href="subscribe.html">
+            Subscription
+        </a>
+
+    </nav>
+
+
+    <header class="site-header">
+
+        <h1>Temperature Reading Analysis</h1>
+
+    </header>
+
+
+    <div class="analysis-box">
+
+        <div id="output"></div>
+
+    </div>
+
+    <footer>
+        <p>End of Page</p>
+        <p>Tanush Gujrathi 16010125071 SY A3 KJSCE</p>
+    </footer>
+
+    <script>
+
+        let temperatureReadings = [34, 36, 38, 39, 41, 40, 37, 35, 39, 42];
+
+        let heatwaveThreshold = 37;
+
+        let minimum = Math.min(...temperatureReadings);
+
+        let maximum = Math.max(...temperatureReadings);
+
+        let total = 0;
+
+        for (let temperature of temperatureReadings) {
+
+            total += temperature;
+
+        }
+
+        let average = total / temperatureReadings.length;
+
+        let aboveThreshold = temperatureReadings.filter( temperature => temperature > heatwaveThreshold ).length;
+
+        let fortyOrAbove = temperatureReadings.filter( temperature => temperature >= 40 ).length;
+
+        let highHeatReadings = temperatureReadings.filter( temperature => temperature >= 40 );
+
+        document.getElementById("output").innerHTML =
+
+            "<h2>Temperature Readings</h2>" +
+
+            temperatureReadings.join(" ") +
+
+            "<h3>Analysis Results</h3>" +
+
+            "Minimum Temperature: " +
+            minimum + "°C<br>" +
+
+            "Maximum Temperature: " +
+            maximum + "°C<br>" +
+
+            "Average Temperature: " +
+            average.toFixed(1) + "°C<br>" +
+
+            "Readings Above Heatwave Threshold: " +
+            aboveThreshold + "<br>" +
+
+            "Readings ≥ 40°C: " +
+            fortyOrAbove + "<br>" +
+
+            "Heatwave Condition Readings: " +
+            highHeatReadings.join(", ");
+
+        console.log(
+            "Temperature Readings:",
+            temperatureReadings
+        );
+
+        console.log(
+            "Minimum:",
+            minimum
+        );
+
+        console.log(
+            "Maximum:",
+            maximum
+        );
+
+        console.log(
+            "Average:",
+            average
+        );
+
+        console.log(
+            "Readings >= 40°C:",
+            fortyOrAbove
+        );
+
+        console.log(
+            "Heatwave Readings:",
+            highHeatReadings
+        );
+
+    </script>
+
+</body>
+
+</html>

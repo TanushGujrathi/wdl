@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Climate Monitoring Object</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .climate-box {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #f5f5f5;
+            border-radius: 10px;
+        }
+
+        #output {
+            text-align: left;
+            line-height: 2;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+   <nav class="navbar">
+
+        <a href="index.html">Home</a>
+
+        <div class="dropdown">
+
+        <button class="dropbtn"> Portal ▾ </button>
+
+            <div class="dropdown-content">
+
+                <a href="alert-details.html"> Alert Details </a>
+                <a href="about-system.html"> About System</a>
+                <a href="sources.html"> Data Sources </a>
+                <a href="hotspot-map.html"> Hotspot Map </a>
+                <a href="forecast.html"> Forecast Table </a>
+                <a href="media.html"> Media Portal </a>
+                <a href="navigation.html"> Portal Index</a>
+
+            </div>
+
+        </div>
+
+        <div class="dropdown">
+
+        <button class="dropbtn"> Analysis & Alerts ▾ </button>
+
+            <div class="dropdown-content">
+
+                <a href="heatwave_analysis.html"> Temperature Analysis </a>
+                <a href="heatwave_warning.html"> Heatwave Risk & Warning </a>
+                <a href="climate_object.html"> Climate Data Object </a>
+                <a href="temperature_analysis.html"> Temperature Array Analysis </a>
+
+            </div>
+
+        </div>
+
+        <div class="dropdown">
+
+            <button class="dropbtn"> Data & Registration ▾ </button>
+
+            <div class="dropdown-content">
+
+                <a href="heatwave-validation.html"> Heatwave Monitoring Data Entry </a>
+                <a href="climate_validation.html"> Climate User Validation </a>
+                <a href="climate_registration.html"> Climate Alert Registration </a>
+
+            </div>
+
+        </div>
+
+        <a href="subscribe.html">
+            Subscription
+        </a>
+
+    </nav>
+
+    <header class="site-header">
+        <h1>Climate Monitoring Object</h1>
+    </header>
+
+    <div class="climate-box">
+
+        <div id="output"></div>
+
+        <button onclick="climateData.displayData()">
+            Display Climate Data
+        </button>
+
+        <button onclick="showDifference()">
+            Calculate Temperature Difference
+        </button>
+
+        <button onclick="showRisk()">
+            Determine Risk
+        </button>
+
+        <button onclick="showWarning()">
+            Show Early Warning
+        </button>
+
+        <button onclick="updateAlert()">
+            Update Alert Status
+        </button>
+
+    </div>
+
+    <footer>
+        <p>End of Page</p>
+        <p>Tanush Gujrathi 16010125071 SY A3 KJSCE</p>
+    </footer>
+
+    <script>
+
+        let climateData = {
+
+            location: "Mumbai",
+
+            city: "Mumbai",
+
+            temperature: 39,
+
+            humidity: 65,
+
+            windSpeed: 12,
+
+            forecastTemperature: 41,
+
+            riskLevel: "High",
+
+            alertStatus: "Active",
+
+            monitoringDate: "2026-09-18",
+
+            threshold: 37,
+
+            displayData: function () {
+
+                document.getElementById("output").innerHTML =
+                    "<h2>Climate Information</h2>" +
+                    "Location: " + this.location + "<br>" +
+                    "City: " + this.city + "<br>" +
+                    "Temperature: " +
+                    this.temperature + "°C<br>" +
+                    "Humidity: " +
+                    this.humidity + "%<br>" +
+                    "Wind Speed: " +
+                    this.windSpeed + " km/h<br>" +
+                    "Forecast Temperature: " +
+                    this.forecastTemperature +
+                    "°C<br>" +
+                    "Risk Level: " +
+                    this.riskLevel + "<br>" +
+                    "Alert Status: " +
+                    this.alertStatus + "<br>" +
+                    "Monitoring Date: " +
+                    this.monitoringDate;
+            },
+
+            calculateDifference: function () {
+
+                return this.temperature - this.threshold;
+
+            },
+
+            determineRisk: function () {
+
+                if (this.temperature >= 40) {
+
+                    this.riskLevel = "Severe";
+
+                } else if (
+                    this.temperature >= 38 &&
+                    this.humidity >= 60
+                ) {
+
+                    this.riskLevel = "High";
+
+                } else if (
+                    this.temperature >= 35 &&
+                    this.temperature < 38
+                ) {
+
+                    this.riskLevel = "Moderate";
+
+                } else {
+
+                    this.riskLevel = "Normal";
+                }
+
+                return this.riskLevel;
+            },
+
+            earlyWarning: function () {
+
+                if (this.forecastTemperature >= 40) {
+
+                    return "Early Warning - Prepare for Heatwave";
+
+                } else {
+
+                    return "No Early Warning Required";
+                }
+            },
+
+            updateAlertStatus: function (status) {
+
+                this.alertStatus = status;
+
+                return this.alertStatus;
+            }
+        };
+
+
+        function showDifference() {
+
+            let difference = climateData.calculateDifference();
+
+            document.getElementById("output").innerHTML = "Temperature Difference: " + difference + "°C";
+
+        }
+
+
+        function showRisk() {
+
+            let risk = climateData.determineRisk();
+
+            document.getElementById("output").innerHTML = "Current Heatwave Risk Level: " + risk;
+
+        }
+
+
+        function showWarning() {
+
+            let warning = climateData.earlyWarning();
+
+            document.getElementById("output").innerHTML = warning;
+
+        }
+
+
+        function updateAlert() {
+
+            let status = climateData.updateAlertStatus("Updated");
+
+            document.getElementById("output").innerHTML = "Alert Status: " + status;
+
+        }
+
+    </script>
+
+</body>
+</html>

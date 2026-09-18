@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Heatwave Risk Warning</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .warning-box {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #f5f5f5;
+            border-radius: 10px;
+        }
+
+        input[type="text"], input[type="number"] {
+            display: block;
+            width: 80%;
+            margin: 12px auto;
+            padding: 10px;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+            margin: 15px;
+        }
+
+        button {
+            padding: 25px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 25px;
+            padding: 15px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+   <nav class="navbar">
+
+        <a href="index.html">Home</a>
+
+        <div class="dropdown">
+
+        <button class="dropbtn"> Portal ▾ </button>
+
+            <div class="dropdown-content">
+
+                <a href="alert-details.html"> Alert Details </a>
+                <a href="about-system.html"> About System</a>
+                <a href="sources.html"> Data Sources </a>
+                <a href="hotspot-map.html"> Hotspot Map </a>
+                <a href="forecast.html"> Forecast Table </a>
+                <a href="media.html"> Media Portal </a>
+                <a href="navigation.html"> Portal Index</a>
+
+            </div>
+
+        </div>
+
+        <div class="dropdown">
+
+        <button class="dropbtn"> Analysis & Alerts ▾ </button>
+
+            <div class="dropdown-content">
+
+                <a href="heatwave_analysis.html"> Temperature Analysis </a>
+                <a href="heatwave_warning.html"> Heatwave Risk & Warning </a>
+                <a href="climate_object.html"> Climate Data Object </a>
+                <a href="temperature_analysis.html"> Temperature Array Analysis </a>
+
+            </div>
+
+        </div>
+
+        <div class="dropdown">
+
+            <button class="dropbtn"> Data & Registration ▾ </button>
+
+            <div class="dropdown-content">
+
+                <a href="heatwave-validation.html"> Heatwave Monitoring Data Entry </a>
+                <a href="climate_validation.html"> Climate User Validation </a>
+                <a href="climate_registration.html"> Climate Alert Registration </a>
+
+            </div>
+
+        </div>
+
+        <a href="subscribe.html">
+            Subscription
+        </a>
+
+    </nav>
+
+    <header class="site-header">
+        <h1>Heatwave Risk and Early Warning</h1>
+    </header>
+
+    <div class="warning-box">
+
+        <input type="text" id="location" placeholder="Location">
+
+        <input type="number" id="temperature" placeholder="Current Temperature">
+
+        <input type="number" id="humidity" placeholder="Humidity (%)">
+
+        <input type="number" id="forecast" placeholder="Forecast Temperature">
+
+        <div class="checkbox-container">
+
+            <label>
+                <input type="checkbox" id="vulnerable"> Vulnerable Population Alert Required
+            </label>
+
+        </div>
+
+        <br>
+
+        <button onclick="checkRisk()">
+            Check Heatwave Risk
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <footer>
+        <p>End of Page</p>
+        <p>Tanush Gujrathi 16010125071 SY A3 KJSCE</p>
+    </footer>
+
+    <script>
+
+        function checkRisk() {
+
+            let location = document.getElementById("location").value;
+
+            let temperature = Number(document.getElementById("temperature").value);
+
+            let humidity = Number(document.getElementById("humidity").value);
+
+            let forecastTemperature = Number(document.getElementById("forecast").value);
+
+            let vulnerable = document.getElementById("vulnerable").checked;
+
+            let riskLevel;
+
+            let recommendation;
+
+            if (temperature >= 40) {
+
+                riskLevel = "SEVERE";
+                recommendation =
+                    "Severe Heatwave Warning";
+
+            } else if (
+                temperature >= 38 &&
+                humidity >= 60
+            ) {
+
+                riskLevel = "HIGH";
+                recommendation =
+                    "Issue Heatwave Warning";
+
+            } else if (
+                temperature >= 35 &&
+                temperature < 38
+            ) {
+
+                riskLevel = "MODERATE";
+                recommendation =
+                    "Monitor Conditions";
+
+            } else if (forecastTemperature >= 40) {
+
+                riskLevel = "EARLY WARNING";
+                recommendation =
+                    "Prepare for Heatwave";
+
+            } else {
+
+                riskLevel = "NORMAL";
+                recommendation =
+                    "Continue Monitoring";
+            }
+
+            if (vulnerable) {
+                recommendation +=
+                    " - Alert vulnerable population.";
+            }
+
+            console.log("Location:", location);
+            console.log("Temperature:", temperature);
+            console.log("Humidity:", humidity);
+            console.log("Forecast:", forecastTemperature);
+            console.log("Risk Level:", riskLevel);
+            console.log("Recommendation:", recommendation);
+
+            document.getElementById("result").innerHTML =
+                "<strong>Location:</strong> " + location +
+                "<br><strong>Temperature:</strong> "
+                + temperature + "°C" +
+                "<br><strong>Humidity:</strong> "
+                + humidity + "%" +
+                "<br><strong>Forecast Temperature:</strong> "
+                + forecastTemperature + "°C" +
+                "<br><strong>Risk Level:</strong> "
+                + riskLevel +
+                "<br><strong>Recommendation:</strong> "
+                + recommendation;
+        }
+
+    </script>
+
+</body>
+</html>
